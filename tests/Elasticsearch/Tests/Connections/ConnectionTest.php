@@ -8,13 +8,13 @@ use Elasticsearch\Serializers\SerializerInterface;
 use Elasticsearch\Serializers\SmartSerializer;
 use Psr\Log\LoggerInterface;
 
-class ConnectionTest extends \PHPUnit\Framework\TestCase
+class ConnectionTest extends \\PHPUnit\Framework\TestCase
 {
     private $logger;
     private $trace;
     private $serializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->logger = $this->createMock(LoggerInterface::class);
         $this->trace = $this->createMock(LoggerInterface::class);

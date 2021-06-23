@@ -4,7 +4,7 @@ namespace Elasticsearch\Tests\Endpoints;
 
 use Elasticsearch\Endpoints\AbstractEndpoint;
 
-class AbstractEndpointTest extends \PHPUnit_Framework_TestCase
+class AbstractEndpointTest extends \\PHPUnit\Framework\TestCase
 {
     private $endpoint;
 
@@ -29,7 +29,7 @@ class AbstractEndpointTest extends \PHPUnit_Framework_TestCase
         $this->endpoint->setParams($params);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->endpoint = $this->getMockForAbstractClass(AbstractEndpoint::class);
     }
