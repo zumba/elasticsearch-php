@@ -8,7 +8,7 @@ use Elasticsearch\Serializers\SerializerInterface;
 use Elasticsearch\Serializers\SmartSerializer;
 use Psr\Log\LoggerInterface;
 
-class ConnectionTest extends \\PHPUnit\Framework\TestCase
+class ConnectionTest extends \PHPUnit\Framework\TestCase
 {
     private $logger;
     private $trace;

@@ -14,7 +14,7 @@ use Mockery as m;
  * @license    http://www.apache.org/licenses/LICENSE-2.0 Apache2
  * @link       http://elasticsearch.org
  */
-class SniffingConnectionPoolTest extends \\PHPUnit\Framework\TestCase
+class SniffingConnectionPoolTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {

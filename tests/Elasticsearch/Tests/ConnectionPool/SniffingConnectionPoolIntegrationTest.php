@@ -11,7 +11,7 @@ use Elasticsearch\ClientBuilder;
  * @license    http://www.apache.org/licenses/LICENSE-2.0 Apache2
  * @link       http://elasticsearch.org
  */
-class SniffingConnectionPoolIntegrationTest extends \\PHPUnit\Framework\TestCase
+class SniffingConnectionPoolIntegrationTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {

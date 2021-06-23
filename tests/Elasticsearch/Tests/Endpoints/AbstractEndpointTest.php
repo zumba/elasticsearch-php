@@ -4,7 +4,7 @@ namespace Elasticsearch\Tests\Endpoints;
 
 use Elasticsearch\Endpoints\AbstractEndpoint;
 
-class AbstractEndpointTest extends \\PHPUnit\Framework\TestCase
+class AbstractEndpointTest extends \PHPUnit\Framework\TestCase
 {
     private $endpoint;
 

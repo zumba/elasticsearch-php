@@ -4,7 +4,7 @@ namespace Elasticsearch\Tests\Endpoints;
 use Elasticsearch\Endpoints\Snapshot\Status;
 use Elasticsearch\Common\Exceptions;
 
-class StatusEndpointTest extends \\PHPUnit\Framework\TestCase
+class StatusEndpointTest extends \PHPUnit\Framework\TestCase
 {
     private $endpoint;
 
