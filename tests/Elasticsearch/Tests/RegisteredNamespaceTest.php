@@ -32,11 +32,9 @@ class RegisteredNamespaceTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals("123", $client->foo()->fooMethod());
     }
 
-    /**
-     * @expectedException \Elasticsearch\Common\Exceptions\BadMethodCallException
-     */
     public function testNonExistingNamespace()
     {
+        $this->expectException(\Elasticsearch\Common\Exceptions\BadMethodCallException::class);
         $builder = new FooNamespaceBuilder();
         $client = ClientBuilder::create()->registerNamespace($builder)->build();
         $this->assertEquals("123", $client->bar()->fooMethod());

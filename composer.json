@@ -21,8 +21,8 @@
     "guzzlehttp/ringphp" : "dev-master"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.7 || ^8",
-    "mockery/mockery": "0.9.4"
+    "phpunit/phpunit": "^9.6",
+    "mockery/mockery": "^1.6"
   },
   "suggest": {
     "ext-curl": "*",

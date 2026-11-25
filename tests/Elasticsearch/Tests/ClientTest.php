@@ -24,11 +24,9 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         m::close();
     }
 
-    /**
-     * @expectedException \Elasticsearch\Common\Exceptions\InvalidArgumentException
-     */
     public function testConstructorIllegalPort()
     {
+        $this->expectException(\Elasticsearch\Common\Exceptions\InvalidArgumentException::class);
         $client = Elasticsearch\ClientBuilder::create()->setHosts(['localhost:abc'])->build();
     }
 
@@ -44,11 +42,9 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         $client = ClientBuilder::fromConfig($params);
     }
 
-    /**
-     * @expectedException \Elasticsearch\Common\Exceptions\RuntimeException
-     */
     public function testFromConfigBadParam()
     {
+        $this->expectException(\Elasticsearch\Common\Exceptions\RuntimeException::class);
         $params = [
             'hosts' => [
                 'localhost:9200'
