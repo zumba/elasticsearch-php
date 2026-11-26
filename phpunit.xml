@@ -4,21 +4,19 @@
         convertNoticesToExceptions="true"
         convertWarningsToExceptions="true"
         convertErrorsToExceptions="true"
-        syntaxCheck="true"
         verbose="true"
 >
     <php>
         <env name="ES_TEST_HOST" value="http://localhost:9200"/>
     </php>
     <testsuites>
-        <testsuite>
+        <testsuite name="unit">
             <directory>tests</directory>
-            <exclude>tests/Elasticsearch/Tests/YamlRunnerTest.php</exclude>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
+    <coverage>
+        <include>
             <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </coverage>
 </phpunit>

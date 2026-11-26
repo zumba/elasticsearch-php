@@ -83,11 +83,9 @@ class StaticConnectionPoolTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($connections[0], $retConnection);
     }
 
-    /**
-     * @expectedException Elasticsearch\Common\Exceptions\NoNodesAvailableException
-     */
     public function testAllHostsFailPing()
     {
+        $this->expectException(\Elasticsearch\Common\Exceptions\NoNodesAvailableException::class);
         $connections = array();
 
         foreach (range(1, 10) as $index) {

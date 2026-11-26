@@ -12,7 +12,6 @@ The process for contributing to any of the Elasticsearch repositories is similar
 
         $> git clone https://github.com/elasticsearch/elasticsearch-php.git
         $> cd elasticsearch-php
-        $> git submodule update --init --recursive
         $> curl -s http://getcomposer.org/installer | php
         $> php composer.phar install --dev
 
@@ -22,15 +21,12 @@ The process for contributing to any of the Elasticsearch repositories is similar
             -Des.index.store.type=memory -Des.discovery.zen.ping.multicast.enabled=false \
             -Des.node.bench=true -Des.script.disable_dynamic=false
 
-4. Run the unit and yaml integration tests to ensure your changes do not break existing code.  The exported `TEST_BUILD_REF` should match the branch of Elasticsearch that is running on your machine (since tests are specific to the server version):
+4. Run the tests to ensure your changes do not break existing code. The integration tests use the Elasticsearch at `ES_TEST_HOST`:
 
-        $> export TEST_BUILD_REF='origin/1.x'
         $> export ES_TEST_HOST='http://localhost:9200'
 
-    Then proceed to initialize the REST yaml tests and run the package. **WARNING: the unit tests will clear your cluster
-    and data..._do not_ run the tests on a production cluster!**
+    **WARNING: the tests will clear your cluster and data..._do not_ run the tests on a production cluster!**
 
-        $> php util/RestSpecRunner.php
         $> php vendor/bin/phpunit
 
 5. Ensure your changes follow the [PSR-2 Coding Style Guide](http://www.php-fig.org/psr/psr-2/). You can run tools such as [PHP-CS-Fixer](http://cs.sensiolabs.org/) or [PHP_CodeSniffer](http://pear.php.net/package/PHP_CodeSniffer) to enforce PSR-2 automatically.

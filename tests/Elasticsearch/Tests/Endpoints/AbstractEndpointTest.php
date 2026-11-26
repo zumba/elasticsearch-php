@@ -18,10 +18,10 @@ class AbstractEndpointTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider invalidParameters
-     * @expectedException Elasticsearch\Common\Exceptions\UnexpectedValueException
      */
     public function testInvalidParamsCauseErrorsWhenProvidedToSetParams(array $params)
     {
+        $this->expectException(\Elasticsearch\Common\Exceptions\UnexpectedValueException::class);
         $this->endpoint->expects($this->once())
             ->method('getParamWhitelist')
             ->willReturn(['one', 'two']);

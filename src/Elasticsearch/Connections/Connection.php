@@ -164,7 +164,7 @@ class Connection implements ConnectionInterface
      * @param \Elasticsearch\Transport $transport
      * @return mixed
      */
-    public function performRequest($method, $uri, $params = null, $body = null, $options = [], Transport $transport = null)
+    public function performRequest($method, $uri, $params = null, $body = null, $options = [], ?Transport $transport = null)
     {
         if (isset($body) === true) {
             $body = $this->serializer->serialize($body);
@@ -207,7 +207,7 @@ class Connection implements ConnectionInterface
 
     private function wrapHandler(callable $handler, LoggerInterface $logger, LoggerInterface $tracer)
     {
-        return function (array $request, Connection $connection, Transport $transport = null, $options) use ($handler, $logger, $tracer) {
+        return function (array $request, Connection $connection, ?Transport $transport, $options) use ($handler, $logger, $tracer) {
 
             $this->lastRequest = [];
             $this->lastRequest['request'] = $request;
@@ -283,10 +283,8 @@ class Connection implements ConnectionInterface
                 } else {
                     $connection->markAlive();
 
-                    if (isset($response['body']) === true) {
-                        $response['body'] = stream_get_contents($response['body']);
-                        $this->lastRequest['response']['body'] = $response['body'];
-                    }
+                    $response['body'] = isset($response['body']) ? stream_get_contents($response['body']) : '';
+                    $this->lastRequest['response']['body'] = $response['body'];
 
                     if ($response['status'] >= 400 && $response['status'] < 500) {
                         $ignore = isset($request['client']['ignore']) ? $request['client']['ignore'] : [];
@@ -561,13 +559,13 @@ class Connection implements ConnectionInterface
         $exception = new MaxRetriesException($message);
         switch ($response['curl']['errno']) {
             case 6:
-                $exception = new CouldNotResolveHostException($message, null, $exception);
+                $exception = new CouldNotResolveHostException($message, 0, $exception);
                 break;
             case 7:
-                $exception = new CouldNotConnectToHost($message, null, $exception);
+                $exception = new CouldNotConnectToHost($message, 0, $exception);
                 break;
             case 28:
-                $exception = new OperationTimeoutException($message, null, $exception);
+                $exception = new OperationTimeoutException($message, 0, $exception);
                 break;
         }
 
